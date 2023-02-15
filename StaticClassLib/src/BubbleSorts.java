@@ -1,4 +1,21 @@
+import java.util.ArrayList;
+
 public abstract class BubbleSorts {
+
+    public static void alphabeticalBubbleSortArrayList(ArrayList<Object[]> words, int objectIndex) {
+        for (var i = 0; i < words.size(); i++)
+        {
+            for (int j = 1; j < words.size(); j++)
+            {
+                if (words.get(j)[objectIndex].toString()
+                        .compareToIgnoreCase
+                                (words.get(j - 1)[objectIndex].toString()) < 0)
+                {
+                    swapItems(words, j);
+                }
+            }
+        }
+    }
 
     public static void alphabeticalBubbleSort(String[] words) {
         for (var i = 0; i < words.length; i++)
@@ -91,6 +108,11 @@ public abstract class BubbleSorts {
         var temp = words[j];
         words[j] = words[j -1];
         words[j -1] = temp;
+    }
+    private static void swapItems(ArrayList<Object[]> words, int j) {
+        var temp = words.get(j);
+        words.set(j, words.get(j -1));
+        words.set(j -1, temp);
     }
 
 
